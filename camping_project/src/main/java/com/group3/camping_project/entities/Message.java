@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,8 +21,8 @@ public class Message implements Serializable {
 
     private Date sentAt ;
 
- //   @OneToOne
-   // private User sender;
+    @ManyToOne
+    private Chatroom chatroom ;
 
 
 

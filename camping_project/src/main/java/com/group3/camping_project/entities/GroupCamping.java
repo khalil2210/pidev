@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +29,8 @@ public class GroupCamping implements Serializable {
     private int AvailablePlaces ;
     private String requirements ;
 
-  //  @ManyToOne
-   // private User author;
+   @ManyToMany
+   private List<User> goingUsers;
 
-  //  private List<User> goingUsers;
 
 }

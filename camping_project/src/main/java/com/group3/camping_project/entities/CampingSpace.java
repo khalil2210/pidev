@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,20 +26,19 @@ public class CampingSpace implements Serializable {
     private  String email ;
     private  String phoneNumber ;
     private int LikesNumber;
+
     @Enumerated(EnumType.STRING)
     private CampingType campingType;
     private String description ;
     private Date CreatedAt ;
     private Date UpdatedAt ;
-/*
-    @OneToMany
-    private  List<Image> image ;
-    @ManyToOne
-    private  Video video ;
-    @ManyToMany
-    private List<User> user;
 
-    @ManyToOne
-    private Reviews reviews;
-*/
+    @OneToOne
+    private Image image ;
+    @OneToOne
+    private  Video video ;
+
+    @OneToMany(mappedBy = "campingSpace")
+    private List<Review> review;
+
 }

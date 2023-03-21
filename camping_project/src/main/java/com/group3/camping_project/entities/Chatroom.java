@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,13 +22,10 @@ public class Chatroom implements Serializable {
     private String name;
     private Date lastUpdated;
 
-/*
-@ManyToMany
-private List<User> users ;
-@OneToMany(mappedBy = "user")
-private  List<Message> messages ;
-@OneToOne
-private User owner ;
+    @ManyToMany
+    private List<User> users ;
 
-*/
+    @OneToMany(mappedBy = "chatroom")
+    private  List<Message> messages ;
+
 }

@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,17 +30,15 @@ public class Post implements Serializable {
 
     private Date updateDate;
 
+    @ManyToOne
+    private User author ;
 
- /*   @ManyToOne
-    private User user ;
-    @OneToMany
-    private List<Image> image;
+    @OneToOne
+    private Image image;
 
-    @OneToMany
-    private List<Video> video;
-
+    @OneToOne
+    private Video video;
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comment;
-    */
 }

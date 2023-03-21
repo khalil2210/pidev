@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,17 +14,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Reviews implements Serializable {
+public class Review implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
 
     private String content ;
-    private int rate ;
+    private int rating ;
     private Date createdAt ;
 
-  /*  @ManyToOne
-    private User author ;
 
-    @OneToMany(mappedBy = "reviews")
-    private List<CampingSpace> campingSpaces;*/
+    @ManyToOne
+    private CampingSpace campingSpace;
 }

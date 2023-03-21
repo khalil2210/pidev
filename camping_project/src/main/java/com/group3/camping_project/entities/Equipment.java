@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -33,13 +30,11 @@ public class Equipment implements Serializable {
    private String description;
 
    private EquipmentType equipmentType ;
-   /*
+
    @ManyToOne
    private User owner;
 
-
-
-   @OneToMany
-   private List<Image> imageList ;*/
+   @OneToOne
+   private Image image ;
 
 }
