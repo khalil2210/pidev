@@ -7,7 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CampingProjectApplication {
 
     public static void main(String[] args) {
+      
         SpringApplication.run(CampingProjectApplication.class, args);
+
+
     }
 
 }
