@@ -38,10 +38,8 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date updateDate;
 
-    ///
     @OneToOne
     private Image profileImage;
-
 
     @OneToMany(mappedBy = "author")
     private List<Post> posts;
@@ -55,8 +53,25 @@ public class User implements Serializable {
     @ManyToMany(mappedBy = "goingUsers")
     private List<GroupCamping> groupCamping;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Chatroom> chatRoom;
+    @OneToMany(mappedBy = "owner")
+    private List<GroupCamping> createdGroupCamping  ;
+
+
+    @OneToMany(mappedBy = "owner")
+    private List<Chatroom>chatroomCreated;
+    @ManyToMany
+    private List<Chatroom>chatrooms;
+
+
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments;
+
+
+    @OneToMany(mappedBy = "author")
+    private List<Review> campingSpaceReview;
+
+    @OneToMany(mappedBy = "sender")
+    private List<Message>messages;
 
 
 }

@@ -29,8 +29,11 @@ public class GroupCamping implements Serializable {
     private int AvailablePlaces ;
     private String requirements ;
 
-   @ManyToMany
-   private List<User> goingUsers;
+    @ManyToOne
+    private User owner;
+
+    @ManyToMany
+    private List<User> goingUsers;
 
 
 }

@@ -22,10 +22,14 @@ public class Chatroom implements Serializable {
     private String name;
     private Date lastUpdated;
 
-    @ManyToMany
-    private List<User> users ;
-
     @OneToMany(mappedBy = "chatroom")
     private  List<Message> messages ;
 
+
+
+    @ManyToOne
+    private User owner ;
+
+    @ManyToMany(mappedBy ="chatrooms" )
+    private List<User> users;
 }

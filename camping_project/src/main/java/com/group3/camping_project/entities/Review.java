@@ -22,7 +22,9 @@ public class Review implements Serializable {
     private int rating ;
     private Date createdAt ;
 
-
     @ManyToOne
     private CampingSpace campingSpace;
+
+    @ManyToOne
+    private User author;
 }
