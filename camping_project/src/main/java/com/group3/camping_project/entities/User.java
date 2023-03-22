@@ -26,8 +26,10 @@ public class User implements Serializable {
     private String password;
     private String phoneNumber;
 
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
+
+
+    /*@Enumerated(value = EnumType.STRING)
+    private Gender gender;*/
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -38,9 +40,11 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date updateDate;
 
-    @OneToOne
-    private Image profileImage;
 
+    //--------Pofile cLass ---------//
+   /* @OneToOne
+    private Image profileImage;
+*/
     @OneToMany(mappedBy = "author")
     private List<Post> posts;
 
@@ -72,6 +76,12 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
+
+
+    //----Profile modification-----//
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
 
 }
