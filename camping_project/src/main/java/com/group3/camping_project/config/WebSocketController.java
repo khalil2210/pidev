@@ -1,0 +1,41 @@
+package com.group3.camping_project.config;
+
+
+import com.group3.camping_project.entities.Message;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin(origins = "*")
+public class WebSocketController {
+
+    @MessageMapping("/send")
+    @SendTo("/topic/")
+    public Message messaging(Message message){
+        Message m = new Message();
+        m.setContent(message.getSender().getFirstName()+ "  :  "+ message.getContent());
+        return m;
+    }
+    @MessageMapping("/join")
+    @SendTo("/topic/")
+    public Message Joining(Message message){
+        Message m = new Message();
+        m.setContent(message.getContent()+" has joined the chatroom , Welcome");
+        return m;
+    }
+    @MessageMapping("/quit")
+    @SendTo("/topic/")
+    public Message Exiting(Message message){
+        Message m = new Message();
+        m.setContent(message.getContent()+" left the chatroom .");
+        return m;
+    }
+
+
+
+
+}
