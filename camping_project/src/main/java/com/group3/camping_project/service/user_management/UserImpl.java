@@ -22,14 +22,18 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
-        User user = convertToEntity(userDTO);
-        user.setCreationDate(new Date());
-        user.setUpdateDate(new Date());
-        User savedUser = userRepository.save(user);
-        return convertToDto(savedUser);
+    public UserDTO createUser(UserDTO userDTO) throws EmailAlreadyExistsException {
+        if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
+            throw new EmailAlreadyExistsException("Email already exists.");
+        }
+        {
+            User user = convertToEntity(userDTO);
+            user.setCreationDate(new Date());
+            user.setUpdateDate(new Date());
+            User savedUser = userRepository.save(user);
+            return convertToDto(savedUser);
+        }
     }
-
     @Override
     public UserDTO updateUser(int userId, UserDTO userDTO) {
         User userToUpdate = userRepository.findById(userId)
@@ -61,8 +65,8 @@ public class UserImpl implements IUserService {
         userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setGender(user.getGender());
         userDTO.setRole(user.getRole());
-        //userDTO.setCreationDate(user.getCreationDate());
-        //userDTO.setUpdateDate(user.getUpdateDate());
+        userDTO.setCreationDate(user.getCreationDate());
+        userDTO.setUpdateDate(user.getUpdateDate());
         //userDTO.setProfileImage(user.getProfileImage());
         return userDTO;
     }
@@ -80,6 +84,7 @@ public User convertToEntity(UserDTO userDTO) {
         user.setRole(userDTO.getRole());
         return user;
     }
+
 }
 
 

@@ -21,11 +21,12 @@ public interface IUserService {
 
     UserDTO getUserById(int userId);
 
-    UserDTO createUser(UserDTO userDTO);
+    UserDTO createUser(UserDTO userDTO)throws EmailAlreadyExistsException;
 
     UserDTO updateUser(int userId, UserDTO userDTO);
 
     void deleteUser(int id);
     UserDTO convertToDto(User user);
     User convertToEntity(UserDTO userDTO);
+
 }

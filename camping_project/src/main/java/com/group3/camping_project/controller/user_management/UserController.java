@@ -1,15 +1,12 @@
 package com.group3.camping_project.controller.user_management;
-import com.group3.camping_project.entities.User;
+import com.group3.camping_project.service.user_management.EmailAlreadyExistsException;
 import com.group3.camping_project.service.user_management.IUserService;
 import com.group3.camping_project.service.user_management.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.List;
+import javax.validation.Valid;
 
 
 @RestController
@@ -24,9 +21,10 @@ public class UserController {
         }
 
         @PostMapping("/")
-        public UserDTO createUser(@RequestBody UserDTO userDTO) {
-            return userService.createUser(userDTO);
-        }
+        public ResponseEntity<String> createUser(@Valid @RequestBody UserDTO userDTO) throws EmailAlreadyExistsException {
+            userService.createUser(userDTO) ;
+                return ResponseEntity.ok("Creation Sucessfull ");
+            }
 
         @PutMapping("/{userId}")
         public UserDTO updateUser(@PathVariable int userId, @RequestBody UserDTO userDTO) {
