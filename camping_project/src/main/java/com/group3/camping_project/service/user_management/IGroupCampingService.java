@@ -10,7 +10,7 @@ public interface IGroupCampingService {
 
     public GroupCamping addGroupCamping (GroupCamping groupCamping);
 
-    public GroupCamping updateGroupCamping (GroupCamping groupCamping);
+    public GroupCamping updateGroupCamping (int id ,GroupCamping updategroupCamping);
 
     GroupCamping deleteGroupCamping(int id);
 
