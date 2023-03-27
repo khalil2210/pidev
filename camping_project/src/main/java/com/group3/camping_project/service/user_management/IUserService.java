@@ -29,4 +29,7 @@ public interface IUserService {
     UserDTO convertToDto(User user);
     User convertToEntity(UserDTO userDTO);
 
+    User findUserByUserName(String userName);
+
+    User saveUser(User user);
 }

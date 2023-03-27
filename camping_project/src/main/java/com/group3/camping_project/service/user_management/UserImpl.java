@@ -3,6 +3,7 @@ package com.group3.camping_project.service.user_management;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -44,7 +45,7 @@ public class UserImpl implements IUserService {
         userToUpdate.setEmail(userDTO.getEmail());
         userToUpdate.setPhoneNumber(userDTO.getPhoneNumber());
         userToUpdate.setGender(userDTO.getGender());
-        userToUpdate.setRole(userDTO.getRole());
+        //userToUpdate.setRole(userDTO.getRole());
         userToUpdate.setUpdateDate(new Date());
         User updatedUser = userRepository.save(userToUpdate);
         return convertToDto(updatedUser);
@@ -64,7 +65,7 @@ public class UserImpl implements IUserService {
         userDTO.setEmail(user.getEmail());
         userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setGender(user.getGender());
-        userDTO.setRole(user.getRole());
+        //userDTO.setRole(user.getRole());
         userDTO.setCreationDate(user.getCreationDate());
         userDTO.setUpdateDate(user.getUpdateDate());
         //userDTO.setProfileImage(user.getProfileImage());
@@ -81,15 +82,22 @@ public User convertToEntity(UserDTO userDTO) {
         user.setPassword(userDTO.getPassword());
         user.setPhoneNumber(userDTO.getPhoneNumber());
         user.setGender(userDTO.getGender());
-        user.setRole(userDTO.getRole());
+        //user.setRole(userDTO.getRole());
         return user;
     }
 
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    @Override
+    public User findUserByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    @Override
+    public User saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(true);
+        return userRepository.save(user); }
 }
-
-
-
-
 
 
 

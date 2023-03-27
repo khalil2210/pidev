@@ -1,13 +1,13 @@
 package com.group3.camping_project.entities;
 
 import com.group3.camping_project.entities.enums.Gender;
-import com.group3.camping_project.entities.enums.Role;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,18 +20,22 @@ public class User implements Serializable {
     private int id;
 
 
+    private String userName;
     private String firstName ;
     private String lastName;
     private String email;
     private String password;
     private String phoneNumber;
-
+    private Boolean active;
 
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
+    //@Enumerated(value = EnumType.STRING)
+    //private Role role;
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
     @Temporal(TemporalType.DATE)
     private Date creationDate;
@@ -73,6 +77,8 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
+
+
 
 
 

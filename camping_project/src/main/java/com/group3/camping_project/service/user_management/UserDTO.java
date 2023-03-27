@@ -1,8 +1,8 @@
 package com.group3.camping_project.service.user_management;
 
 
+import com.group3.camping_project.entities.Role;
 import com.group3.camping_project.entities.enums.Gender;
-import com.group3.camping_project.entities.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,17 +49,5 @@ public class UserDTO {
     private Date creationDate ;
     private Date updateDate ;
 
-//   public UserDTO(User user) {
-//        this.id = user.getId();
-//        this.firstName = user.getFirstName();
-//        this.lastName = user.getLastName();
-//        this.email = user.getEmail();
-//        this.phoneNumber = user.getPhoneNumber();
-//        this.gender = user.getGender();
-//        this.role = user.getRole();
-//        this.creationDate = user.getCreationDate();
-//        this.updateDate = user.getUpdateDate();
-//        this.profileImage = user.getProfileImage().getImageData();
-//    }
 }
 
