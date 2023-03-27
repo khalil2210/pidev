@@ -12,4 +12,9 @@ public interface IPostService {
 
     Post getPostById(int id);
     void deletePost(int id);
-}
+    Post addPostAndAssignUserById(Post post, Integer userId);
+    public List<Post> getAllPostsByUser(int userId) ;
+    public List<Post> searchPosts(String authorName, String title) ;
+
+
+    }

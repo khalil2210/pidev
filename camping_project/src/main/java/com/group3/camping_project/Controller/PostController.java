@@ -34,4 +34,23 @@ public class PostController {
     public void deletePost(@PathVariable("id")Integer id){
         postService.deletePost(id);
     }
+    @PostMapping("/addPostWithUser/{userId}")
+    public Post addPostAndAssignUserById(@RequestBody Post post, @RequestParam Integer userId){
+        if (userId == null) {
+            throw new IllegalArgumentException("The user ID value cannot be null!!!!");
+        }
+        return postService.addPostAndAssignUserById(post,userId);
+        }
+    @GetMapping("/postsByuser/{userId}")
+    public List<Post> getAllPostsByUser(@PathVariable int userId) {
+        return postService.getAllPostsByUser(userId);
+    }
+
+    @GetMapping("/postsearch")
+    public List<Post> searchPosts(@RequestParam(required = false) String authorName, @RequestParam(required = false) String title) {
+        return postService.searchPosts(authorName, title);
+    }
+
+
 }
+
