@@ -2,6 +2,7 @@ package com.group3.camping_project.config;
 
 
 import com.group3.camping_project.entities.Message;
+import com.group3.camping_project.entities.User;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,8 @@ public class WebSocketController {
     @SendTo("/topic/")
     public Message messaging(Message message){
         Message m = new Message();
-        m.setContent(message.getSender().getFirstName()+ "  :  "+ message.getContent());
+        String sender=message.getSender().getFirstName();
+        m.setContent(sender+"  :  "+ message.getContent());
         return m;
     }
     @MessageMapping("/join")

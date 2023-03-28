@@ -35,7 +35,6 @@ public class ChatroomServiceImpl implements IChatroomService{
     @Override
     public void deleteChatroom(int chatroomId) {
        iChatroomRepo.deleteById(chatroomId);
-
     }
     @Override
     public Chatroom updateChatroom() {
