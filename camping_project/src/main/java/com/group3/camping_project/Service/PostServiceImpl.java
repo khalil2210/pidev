@@ -7,6 +7,7 @@ import com.group3.camping_project.repository.IUserRepo;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ public class PostServiceImpl implements IPostService{
 
     @Override
     public Post addPost (Post post){
+        filterBadWords(post);
         return postRepo.save(post);
     }
     @Override
@@ -27,6 +29,7 @@ public class PostServiceImpl implements IPostService{
     }
     @Override
     public Post updatePost(Post post){
+        filterBadWords(post);
         return postRepo.save(post);
     }
     @Override
@@ -45,6 +48,8 @@ public class PostServiceImpl implements IPostService{
         User user = userRepo.findById(userId).get();
 
         user.getPosts().add(post);
+        filterBadWords(post);
+
 
         post.setAuthor(user);
         return postRepo.save(post);
@@ -75,6 +80,26 @@ public class PostServiceImpl implements IPostService{
         }
 
         return posts;
+    }
+
+
+    private List<String> badWords = Arrays.asList("bad", "ugly", "nasty"); // list of bad words
+
+
+    private void filterBadWords(Post post) {
+        // Filter bad words in title
+        if (post.getTitle() != null) {
+            for (String word : badWords) {
+                post.setTitle(post.getTitle().replaceAll("(?i)" + word, "***"));
+            }
+        }
+
+        // Filter bad words in content
+        if (post.getContent() != null) {
+            for (String word : badWords) {
+                post.setContent(post.getContent().replaceAll("(?i)" + word, "***"));
+            }
+        }
     }
 
 }

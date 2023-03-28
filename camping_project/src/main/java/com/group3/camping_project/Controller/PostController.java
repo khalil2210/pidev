@@ -35,7 +35,7 @@ public class PostController {
         postService.deletePost(id);
     }
     @PostMapping("/addPostWithUser/{userId}")
-    public Post addPostAndAssignUserById(@RequestBody Post post, @RequestParam Integer userId){
+    public Post addPostAndAssignUserById(@RequestBody Post post, @PathVariable Integer userId){
         if (userId == null) {
             throw new IllegalArgumentException("The user ID value cannot be null!!!!");
         }
