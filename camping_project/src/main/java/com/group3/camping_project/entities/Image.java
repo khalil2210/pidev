@@ -18,7 +18,7 @@ public class Image implements Serializable {
     private int id;
 
     @Lob
-    @Column(columnDefinition = "longbLob")
+    @Column(columnDefinition = "longblob")
     private byte[] imageData;
 
 }
