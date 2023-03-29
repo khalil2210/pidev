@@ -87,11 +87,18 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
 
-    public User(String username, String email, String password) {
+    public User(String username, String email,String firstName, String lastName,Gender gender, double phoneNumber,String encode){
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.firstName = firstName ;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber ;
+        this.password = encode;
+
+
     }
+
 //    public User(String username, String email, String encode) {
 //
 //    }

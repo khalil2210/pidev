@@ -1,12 +1,14 @@
 package com.group3.camping_project.controller.user_management.request;
 
 
+import com.group3.camping_project.entities.enums.Gender;
 import lombok.AllArgsConstructor;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
+
 
 @AllArgsConstructor
 public class SignupRequest {
@@ -25,6 +27,16 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
+    @NotBlank
+    private String firstName ;
+    @NotBlank
+    private String lastName;
+
+    @NotNull
+    private Gender gender ;
+
+
+    private double phoneNumber ;
 
 
 
@@ -58,5 +70,37 @@ public class SignupRequest {
 
     public void setRole(Set<String> role) {
         this.role = role;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public double getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(double phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
