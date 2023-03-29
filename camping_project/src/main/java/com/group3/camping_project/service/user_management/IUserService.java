@@ -1,33 +1,26 @@
 package com.group3.camping_project.service.user_management;
 
 import com.group3.camping_project.entities.User;
+import com.group3.camping_project.service.user_management.exception.EmailAlreadyExistsException;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
 public interface IUserService {
 
+   // String signin(String username, String password);
 
-//    List<User> getAlUsers();
-//
-//    User getUser(int id);
-//
-//    User createUser(User user);
-//
-//    User createUser(User user);
-//
-//    User updateUser(User user);
+    String signup(User user);
 
-    UserDTO getUserById(int userId);
+    void delete(String username);
 
-    UserDTO createUser(UserDTO userDTO)throws EmailAlreadyExistsException;
+    User search(String username);
 
-    UserDTO updateUser(int userId, UserDTO userDTO);
+    User whoami(HttpServletRequest req);
 
-    void deleteUser(int id);
-    UserDTO convertToDto(User user);
-    User convertToEntity(UserDTO userDTO);
+    String refresh(String username);
 
     User findUserByUserName(String userName);
 

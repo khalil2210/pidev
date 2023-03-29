@@ -2,10 +2,10 @@ package com.group3.camping_project.entities;
 
 import com.group3.camping_project.entities.enums.Gender;
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,19 +14,23 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
+        })
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
-    private String userName;
+    private String username;
     private String firstName ;
     private String lastName;
     private String email;
+
+
     private String password;
-    private String phoneNumber;
-    private Boolean active;
+    private double phoneNumber;
 
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
@@ -34,8 +38,13 @@ public class User implements Serializable {
     //@Enumerated(value = EnumType.STRING)
     //private Role role;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Set<Role> roles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
 
     @Temporal(TemporalType.DATE)
     private Date creationDate;
@@ -78,8 +87,12 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
 
-
-
-
-
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+//    public User(String username, String email, String encode) {
+//
+//    }
 }

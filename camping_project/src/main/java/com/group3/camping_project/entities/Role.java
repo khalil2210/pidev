@@ -1,29 +1,32 @@
 package com.group3.camping_project.entities;
 
-import com.group3.camping_project.entities.enums.RoleName;
+
+import com.group3.camping_project.entities.enums.ERole;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
-@NoArgsConstructor
-public class Role implements Serializable {
-        @Id
-        @GeneratedValue(strategy =
-                GenerationType.AUTO)
-        private int id;
-        @Enumerated(EnumType.STRING)
-        private RoleName role;
+@Table(name = "roles")
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-        @Override
-        public String toString() {
-                return "Role{" +
-                        "id=" + id +
-                        ", role=" + role +
-                        '}';
-        }
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERole name;
+
+    public Role() {
+    }
+
+    public Role(ERole name) {
+        this.name = name;
+    }
 }
