@@ -1,13 +1,10 @@
-package com.group3.camping_project.config;
+package com.group3.camping_project.Config;
 
 
 import com.group3.camping_project.entities.Message;
-import com.group3.camping_project.entities.User;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
