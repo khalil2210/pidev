@@ -6,7 +6,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,24 +17,32 @@ import java.util.Date;
 public class Equipment implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id ;
+   private long id ;
 
    private String name;
 
+   private String description;
    private float price;
 
-   private Date createdAt ;
+   private LocalDateTime createdAt ;
 
    private int quantity ;
 
-   private String description;
 
+   @Enumerated(EnumType.STRING)
    private EquipmentType equipmentType ;
 
    @ManyToOne
-   private User owner;
+   private User user;
 
    @OneToOne
    private Image image ;
+
+
+
+   @PrePersist
+   public void a(){
+      createdAt = LocalDateTime.now();
+   }
 
 }
