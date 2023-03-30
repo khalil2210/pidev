@@ -1,6 +1,6 @@
 package com.group3.camping_project.service;
 
-import com.group3.camping_project.Utils.ImageUtils;
+import com.group3.camping_project.utils.ImageUtils;
 import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.repository.IImageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
