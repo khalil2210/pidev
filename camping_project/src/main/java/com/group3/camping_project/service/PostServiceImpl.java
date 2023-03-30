@@ -1,4 +1,4 @@
-package com.group3.camping_project.Service;
+package com.group3.camping_project.service;
 
 import com.group3.camping_project.entities.Post;
 import com.group3.camping_project.entities.User;

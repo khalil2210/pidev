@@ -1,12 +1,9 @@
 package com.group3.camping_project.Controller;
 
 import com.group3.camping_project.entities.Post;
-import com.group3.camping_project.Service.PostServiceImpl;
-import com.group3.camping_project.repository.IPostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.group3.camping_project.Service.IPostService;
+import com.group3.camping_project.service.IPostService;
 
 import java.util.List;
 
