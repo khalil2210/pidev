@@ -2,17 +2,14 @@ package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Equipment;
 import com.group3.camping_project.entities.EquipmentResponse;
-import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.repository.IImageRepo;
-import com.group3.camping_project.repository.IMessageRepo;
-import com.group3.camping_project.service.IImageService;
+import com.group3.camping_project.service.FileService.IImageService;
 import com.group3.camping_project.service.ImpEquipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
