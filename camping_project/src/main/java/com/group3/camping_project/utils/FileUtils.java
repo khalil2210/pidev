@@ -1,4 +1,4 @@
-package com.group3.camping_project.Utils;
+package com.group3.camping_project.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;

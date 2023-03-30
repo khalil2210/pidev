@@ -25,7 +25,6 @@ public class Message implements Serializable {
     @JsonIgnore
     private Chatroom chatroom ;
 
-
     @ManyToOne
     private User sender ;
 

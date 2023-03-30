@@ -63,7 +63,7 @@ public class User implements Serializable {
     private List<Chatroom>chatroomCreated;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Chatroom>chatrooms;
 
 

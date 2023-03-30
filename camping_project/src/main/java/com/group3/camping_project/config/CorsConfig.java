@@ -1,4 +1,4 @@
-package com.group3.camping_project.Config;
+package com.group3.camping_project.config;
 /*
 import org.apache.catalina.filters.CorsFilter;
 import org.springframework.context.annotation.Bean;

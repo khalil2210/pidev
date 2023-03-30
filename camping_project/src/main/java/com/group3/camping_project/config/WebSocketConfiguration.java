@@ -1,4 +1,4 @@
-package com.group3.camping_project.Config;
+package com.group3.camping_project.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -11,15 +11,18 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
 
+
+
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-     registry.addEndpoint("/ws-websocket").withSockJS();
+     registry.addEndpoint("/ws-websocket").setAllowedOriginPatterns("*").withSockJS();
     }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-     config.enableSimpleBroker("/topic");
+     config.enableSimpleBroker("/chatroom");
      config.setApplicationDestinationPrefixes("/app");
+
 
     }
 }

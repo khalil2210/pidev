@@ -29,6 +29,6 @@ public class Chatroom implements Serializable {
     private User owner ;
 
 
-    @ManyToMany(mappedBy ="chatrooms" )
+    @ManyToMany(mappedBy ="chatrooms",fetch = FetchType.EAGER)
     private List<User> users;
 }

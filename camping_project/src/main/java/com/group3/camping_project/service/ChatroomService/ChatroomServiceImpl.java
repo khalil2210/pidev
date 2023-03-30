@@ -1,4 +1,4 @@
-package com.group3.camping_project.Services.ChatroomService;
+package com.group3.camping_project.service.ChatroomService;
 
 import com.group3.camping_project.entities.Chatroom;
 import com.group3.camping_project.entities.User;
@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ChatroomServiceImpl implements IChatroomService{

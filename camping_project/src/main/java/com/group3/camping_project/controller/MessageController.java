@@ -1,7 +1,8 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
-import com.group3.camping_project.Services.MessageService.IMessageService;
+import com.group3.camping_project.service.MessageService.IMessageService;
 import com.group3.camping_project.entities.Message;
+import com.group3.camping_project.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class MessageController {
     IMessageService iMessageService;
 
     @PostMapping("addMessage")
-    public Message addMessage(@RequestBody Message message,@RequestParam int senderId,@RequestParam int chatroomId){
+    public Message addMessage(@RequestBody Message message, @RequestParam User senderId, @RequestParam int chatroomId){
        return iMessageService.addMessage(message,senderId,chatroomId);
     }
 

@@ -1,6 +1,6 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
-import com.group3.camping_project.Services.ChatroomService.IChatroomService;
+import com.group3.camping_project.service.ChatroomService.IChatroomService;
 import com.group3.camping_project.entities.Chatroom;
 import com.group3.camping_project.entities.User;
 

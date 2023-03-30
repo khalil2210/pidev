@@ -1,8 +1,7 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
 
-import com.group3.camping_project.Services.StorageService.IImageService;
-import com.group3.camping_project.Services.StorageService.IVideoService;
+import com.group3.camping_project.service.FileService.IVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

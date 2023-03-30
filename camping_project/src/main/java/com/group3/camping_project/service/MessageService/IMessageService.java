@@ -1,12 +1,13 @@
-package com.group3.camping_project.Services.MessageService;
+package com.group3.camping_project.service.MessageService;
 
 import com.group3.camping_project.entities.Message;
+import com.group3.camping_project.entities.User;
 
 import java.util.List;
 
 public interface IMessageService {
 
-    public Message addMessage(Message message,int senderId,int chatroomId);
+    public Message addMessage(Message message, User senderId, int chatroomId);
 
     public void deleteMessage(int idMessage);
 

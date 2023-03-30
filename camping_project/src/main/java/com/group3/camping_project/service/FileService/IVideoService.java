@@ -1,4 +1,4 @@
-package com.group3.camping_project.Services.StorageService;
+package com.group3.camping_project.service.FileService;
 
 import org.springframework.web.multipart.MultipartFile;
 

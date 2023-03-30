@@ -1,6 +1,6 @@
-package com.group3.camping_project.Services.StorageService;
+package com.group3.camping_project.service.FileService;
 
-import com.group3.camping_project.Utils.FileUtils;
+import com.group3.camping_project.utils.FileUtils;
 import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.repository.IImageRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
-package com.group3.camping_project.Services.MessageService;
+package com.group3.camping_project.service.MessageService;
 
-import com.group3.camping_project.Services.ChatroomService.IChatroomService;
 import com.group3.camping_project.entities.Chatroom;
 import com.group3.camping_project.entities.Message;
 import com.group3.camping_project.entities.User;
@@ -22,10 +21,10 @@ public class MessageServiceImpl implements IMessageService {
     @Autowired
     IUserRepo iUserRepo;
     @Override
-    public Message addMessage(Message message,int senderId,int chatroomId) {
-        User sender=iUserRepo.findById(senderId).get();
+    public Message addMessage(Message message,User senderId,int chatroomId) {
+        //User sender=iUserRepo.findById(senderId).get();
         Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
-        message.setSender(sender);
+        message.setSender(senderId);
         message.setChatroom(chatroom);
        return  iMessageRepo.save(message);
     }
