@@ -20,7 +20,6 @@ public class Image implements Serializable {
     private int id;
 
     @Lob
-    @Column(columnDefinition = "longbLob")
     private byte[] imageData;
 }
 

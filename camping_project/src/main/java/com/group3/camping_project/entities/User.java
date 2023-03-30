@@ -47,7 +47,7 @@ public class User implements Serializable {
     @ManyToMany
     private List<CampingSpace> createdCampingSpace;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "user")
     private List<Equipment> equipment;
 
     @ManyToMany(mappedBy = "goingUsers")
