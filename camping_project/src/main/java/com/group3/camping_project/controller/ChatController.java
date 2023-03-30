@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ChatController {
-    private final String apiKey = "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";
+    private final String apiKey = "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";
     private final String modelId = "text-davinci-003";
 
     @GetMapping("/chat")
