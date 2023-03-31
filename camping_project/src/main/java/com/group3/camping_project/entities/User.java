@@ -1,5 +1,6 @@
 package com.group3.camping_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.group3.camping_project.entities.enums.Gender;
 import com.group3.camping_project.entities.enums.Role;
 import lombok.*;
@@ -64,6 +65,7 @@ public class User implements Serializable {
 
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Comment> comments;
 
 
