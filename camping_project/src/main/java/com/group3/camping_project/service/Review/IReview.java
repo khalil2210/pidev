@@ -1,4 +1,4 @@
-package com.group3.camping_project.services;
+package com.group3.camping_project.service.Review;
 
 import com.group3.camping_project.entities.Review;
 
@@ -9,4 +9,5 @@ public interface IReview {
     public Review updateReview (Review review);
     public List<Review> retrieveAllReviews();
     public void deleteReview (int id);
+    Review addandAssignReviewtoCampingSpace(int id, Review review,int idcampingspace );
 }
