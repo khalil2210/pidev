@@ -1,4 +1,5 @@
 package com.group3.camping_project.Controller;
+import com.group3.camping_project.entities.User;
 import  com.group3.camping_project.service.user_management.IGroupCampingService;
 import com.group3.camping_project.entities.GroupCamping;
 import com.group3.camping_project.repository.IGroupCampingRepo;
@@ -37,13 +38,32 @@ public class GroupCampingController {
         iGroupCampingService.deleteGroupCamping(id);
     }
 
-    @GetMapping("/findGroupCamping/{id}")
+    @GetMapping("/retrievbyidGpCamping/{id}")
     public GroupCamping retrievbyidGpCamping (@PathVariable("id") int id)
     {
         return iGroupCampingService.retrievbyidGpCamping(id);
     }
 
 
+
+    @GetMapping("/{groupId}/getGroupmembers")
+    public List<User> getGroupmembers (@PathVariable int groupId)
+    {
+        return iGroupCampingService.getGroupmembers(groupId);
+    }
+
+
+    @PostMapping("/{groupId}/addUser/{userId}")
+    public void addUserToGroup(@PathVariable int userId, @PathVariable int groupId)
+    {
+         iGroupCampingService.addUserToGroup(userId , groupId);
+    }
+
+    @PostMapping("/{groupId}/removeUser/{userId}")
+    public void removeUserToGroup(@PathVariable int userId, @PathVariable int groupId)
+    {
+        iGroupCampingService.removeUserOfGroup(groupId,userId);
+    }
 
 
 }
