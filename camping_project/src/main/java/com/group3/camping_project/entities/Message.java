@@ -1,14 +1,14 @@
 package com.group3.camping_project.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -22,6 +22,7 @@ public class Message implements Serializable {
     private Date sentAt ;
 
     @ManyToOne
+    @JsonIgnore
     private Chatroom chatroom ;
 
     @ManyToOne

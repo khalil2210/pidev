@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.beans.MutablePropertyValues;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class Post implements Serializable {
     private Date updateDate;
 
     @ManyToOne
+    @JsonIgnore
     private User author ;
 
     @OneToOne
