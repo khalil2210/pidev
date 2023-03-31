@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -46,6 +47,8 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @Column(name = "email_verified")
+    private boolean emailVerified;
 
     @Temporal(TemporalType.DATE)
     private Date creationDate;

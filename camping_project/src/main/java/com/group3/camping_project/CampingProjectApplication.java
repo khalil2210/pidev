@@ -10,7 +10,6 @@ public class CampingProjectApplication {
       
         SpringApplication.run(CampingProjectApplication.class, args);
 
-
     }
 
 }

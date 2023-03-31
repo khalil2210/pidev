@@ -3,6 +3,8 @@ package com.group3.camping_project.controller.user_management.request;
 
 import com.group3.camping_project.entities.enums.Gender;
 import lombok.AllArgsConstructor;
+
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -34,11 +36,18 @@ public class SignupRequest {
 
     @NotNull
     private Gender gender ;
-
-
     private double phoneNumber ;
 
+    @Column(nullable = false)
+    private boolean verified = false;
 
+//    public boolean isVerified() {
+//        return verified;
+//    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
 
     public String getUsername() {
         return username;

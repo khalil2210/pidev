@@ -1,15 +1,14 @@
 package com.group3.camping_project.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,6 +30,7 @@ public class Post implements Serializable {
     private Date updateDate;
 
     @ManyToOne
+    @JsonIgnore
     private User author ;
 
     @OneToOne
