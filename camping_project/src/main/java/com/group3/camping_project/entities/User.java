@@ -8,12 +8,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-<<<<<<< HEAD
-@Data
-=======
+
 import java.util.Set;
 
->>>>>>> 16bac93ed612747bf9dc3151b5f0d4693d463764
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -86,6 +84,7 @@ public class User implements Serializable {
 
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Comment> comments;
 
 
