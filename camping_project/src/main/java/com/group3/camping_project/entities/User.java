@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
 import java.util.Set;
 
 
@@ -83,6 +84,7 @@ public class User implements Serializable {
 
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Comment> comments;
 
 
