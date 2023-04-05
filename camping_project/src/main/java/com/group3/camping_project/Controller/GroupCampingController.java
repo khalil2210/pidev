@@ -1,8 +1,7 @@
 package com.group3.camping_project.Controller;
 import com.group3.camping_project.entities.User;
-import  com.group3.camping_project.service.user_management.IGroupCampingService;
+import com.group3.camping_project.service.user_management.GroupCamping.IGroupCampingService;
 import com.group3.camping_project.entities.GroupCamping;
-import com.group3.camping_project.repository.IGroupCampingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,7 +61,7 @@ public class GroupCampingController {
     @PostMapping("/{groupId}/removeUser/{userId}")
     public void removeUserToGroup(@PathVariable int userId, @PathVariable int groupId)
     {
-        iGroupCampingService.removeUserOfGroup(groupId,userId);
+        iGroupCampingService.removeUserOfGroup(userId ,groupId);
     }
 
 

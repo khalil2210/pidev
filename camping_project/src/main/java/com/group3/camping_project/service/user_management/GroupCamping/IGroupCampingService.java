@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.user_management;
+package com.group3.camping_project.service.user_management.GroupCamping;
 
 import com.group3.camping_project.entities.GroupCamping;
 import com.group3.camping_project.entities.User;
