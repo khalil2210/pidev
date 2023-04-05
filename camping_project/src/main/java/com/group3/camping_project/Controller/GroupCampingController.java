@@ -1,6 +1,6 @@
 package com.group3.camping_project.Controller;
 import com.group3.camping_project.entities.User;
-import com.group3.camping_project.service.user_management.GroupCamping.IGroupCampingService;
+import com.group3.camping_project.service.user_management.IGroupCampingService;
 import com.group3.camping_project.entities.GroupCamping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
