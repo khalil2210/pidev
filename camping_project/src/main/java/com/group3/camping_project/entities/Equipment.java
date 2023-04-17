@@ -35,8 +35,9 @@ public class Equipment implements Serializable {
    @Enumerated(EnumType.STRING)
    private EquipmentType equipmentType ;
 
-   @ManyToOne
-   private User user;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Image image;

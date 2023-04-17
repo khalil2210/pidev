@@ -15,8 +15,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 @Service
 public class Chatservice {
-    private final String apiKey = "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";
-    private final String modelId = "text-davinci-001";
+    private final String apiKey = "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";
+    private final String modelId = "gpt-4";
 
 
 //    public String chatqpt( String message
@@ -28,14 +28,14 @@ public class Chatservice {
     public String chat( String message) {
         try {
             // Create a new HTTP connection to the OpenAI API
-            URL url = new URL("https://api.openai.com/v1/engines/" + modelId + "/completions");
+            URL url = new URL("https://api.openai.com/v1/chat/completions");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
 
             // Construct the JSON request body
-            String jsonRequestBody = "{\"prompt\": \"" + message + "\", \"max_tokens\": 64 }";
+            String jsonRequestBody = "{\"prompt\": \"" + message + "\", \"max_tokens\": 2,049 }";
 
             // Send the request body
             con.setDoOutput(true);

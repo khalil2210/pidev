@@ -58,6 +58,7 @@ public class ServiceEquipment implements ImpEquipe {
     public Equipment updateEquipment1(Equipment equipment,int id) {
         Image image= iImageRepo.findById(id).get();
         equipment.setImage(image);
+        System.out.println(equipment);
         return iEquipmentRepo.save(equipment);
     }
     @Override
@@ -67,8 +68,8 @@ public class ServiceEquipment implements ImpEquipe {
         System.out.println(user);
         equipment.setImage(image);
         equipment.setUser(user);
-        user.getEquipment().add(equipment); // add equipment to user's list
-        iUserRepo.save(user); // save updated user entity
+//        user.getEquipment().add(equipment); // add equipment to user's list
+//        iUserRepo.save(user); // save updated user entity
         return iEquipmentRepo.save(equipment);
     }
 //  public Equipment ajouter(Equipment equipment, MultipartFile file) throws IOException {
