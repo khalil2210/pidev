@@ -19,10 +19,15 @@ public class Comment implements Serializable {
     private int id ;
     private String content ;
     private Date createdAt ;
+
+    @OneToOne
+    private Image imageComment;
     @ManyToOne
+    @JsonIgnore
     private Post post;
 
     @ManyToOne
+    @JsonIgnore
     private User author;
 
 
