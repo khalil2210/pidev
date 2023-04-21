@@ -10,13 +10,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/message")
+@CrossOrigin(origins = "*")
 public class MessageController {
 
     @Autowired
     IMessageService iMessageService;
 
     @PostMapping("addMessage")
-    public Message addMessage(@RequestBody Message message, @RequestParam User senderId, @RequestParam int chatroomId){
+    public Message addMessage(@RequestBody Message message, @RequestParam(required = false) User senderId, @RequestParam int chatroomId){
        return iMessageService.addMessage(message,senderId,chatroomId);
     }
 

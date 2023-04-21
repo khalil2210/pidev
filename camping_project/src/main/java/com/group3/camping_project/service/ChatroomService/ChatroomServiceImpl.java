@@ -1,13 +1,19 @@
 package com.group3.camping_project.service.ChatroomService;
 
 import com.group3.camping_project.entities.Chatroom;
+import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IChatroomRepo;
+import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.repository.IUserRepo;
+import com.group3.camping_project.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -19,10 +25,13 @@ public class ChatroomServiceImpl implements IChatroomService{
     @Autowired
     IUserRepo iUserRepo;
 
+    @Autowired
+    IImageRepo iImageRepo;
+
     @Override
-    public Chatroom addChatroom(Chatroom chatroom,int ownerId) {
-        User owner=iUserRepo.findById(ownerId).get();
-        chatroom.setOwner(owner);
+    public Chatroom addChatroom(Chatroom chatroom,MultipartFile image) throws IOException {
+        Image imageR= iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image.getBytes())).build());
+        chatroom.setImage(imageR);
         return iChatroomRepo.save(chatroom);
     }
 

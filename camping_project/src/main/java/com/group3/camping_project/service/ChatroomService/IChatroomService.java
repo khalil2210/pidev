@@ -3,12 +3,14 @@ package com.group3.camping_project.service.ChatroomService;
 import com.group3.camping_project.entities.Chatroom;
 import com.group3.camping_project.entities.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface IChatroomService  {
 
-    public Chatroom addChatroom(Chatroom chatroom,int ownerId);
+    public Chatroom addChatroom(Chatroom chatroom, MultipartFile image) throws IOException;
 
     public List<Chatroom>getAllChatroom();
     public void deleteChatroom(int chatroomId);
