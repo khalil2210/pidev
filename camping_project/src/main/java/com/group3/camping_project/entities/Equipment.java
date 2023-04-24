@@ -22,7 +22,7 @@ public class Equipment implements Serializable {
    private long id ;
 
    private String name;
-
+   private int like;
    private String description;
    private float price;
     @Column(updatable = false)
@@ -41,7 +41,6 @@ public class Equipment implements Serializable {
 
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Image image;
-
 
     @PrePersist
     public void create(){
