@@ -1,25 +1,18 @@
 package com.group3.camping_project.config;
-
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.group3.camping_project.entities.Image;
-import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.service.ChatroomService.IChatroomService;
 import com.group3.camping_project.service.FileService.IImageService;
 import com.group3.camping_project.service.MessageService.IMessageService;
 import com.group3.camping_project.entities.Message;
 import com.group3.camping_project.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
+
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.mock.web.MockMultipartFile;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.socket.BinaryMessage;
+
 
 import java.io.IOException;
 
@@ -28,7 +21,7 @@ import java.io.IOException;
 public class WebSocketController {
 
     @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+     SimpMessagingTemplate messagingTemplate;
     @Autowired
     IMessageService iMessageService;
     @Autowired
@@ -46,8 +39,10 @@ public class WebSocketController {
     }
     @MessageMapping("/sendImageToChatroom")
     // /app/chatroom
-    public void messaging(@Payload Image image) throws IOException {
-        System.out.println(image.getImageData()[0]);
+    public void messaging(@Payload byte[] data) throws IOException {
+        System.out.println("image uploaded succesfullyyy");
+        System.out.println(data);
+
     }
 
 
@@ -56,7 +51,7 @@ public class WebSocketController {
         Message message = new Message();
         message.setContent(user.getFirstName() + " has joined the chatroom, Welcome");
         messagingTemplate.convertAndSend("/chatroom/"+chatroomId,message);
-        iChatroomService.addUserToChatroom(user.getId(),chatroomId);
+        iChatroomService.addUserToChatroom(user.getUsername(),chatroomId);
     }
 
     //////to be modified

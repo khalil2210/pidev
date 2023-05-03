@@ -39,13 +39,13 @@ public class ChatroomController {
 
 
     @PostMapping("/addUserToChatroom")
-    public Chatroom addUserToChatroom(int userId, int chatroomId){
-        return iChatroomService.addUserToChatroom(userId,chatroomId);
+    public Chatroom addUserToChatroom(@RequestParam String username,@RequestParam int chatroomId){
+        return iChatroomService.addUserToChatroom(username,chatroomId);
     }
 
-    @DeleteMapping("/removeUserFromChatroom")
-    public ResponseEntity<String> removeUserFromChatroom(int userId, int chatroomId){
-        return iChatroomService.removeUserFromChatroom(userId,chatroomId);
+    @DeleteMapping ("/removeUserFromChatroom")
+    public ResponseEntity<String> removeUserFromChatroom(@RequestParam String username,@RequestParam int chatroomId){
+        return iChatroomService.removeUserFromChatroom(username,chatroomId);
     }
 
     @GetMapping("/getUserChatrooms")

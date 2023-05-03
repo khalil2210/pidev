@@ -17,9 +17,9 @@ public interface IChatroomService  {
 
     public Chatroom updateChatroom();
 
-    public Chatroom addUserToChatroom(int userId ,int chatroomId);
+    public Chatroom addUserToChatroom(String username,int chatroomId);
 
-    public ResponseEntity<String> removeUserFromChatroom(int userId, int chatroomId);
+    public ResponseEntity<String> removeUserFromChatroom(String username, int chatroomId);
 
     public List<Chatroom> getUserChatrooms(int userId);
 

@@ -50,8 +50,8 @@ public class ChatroomServiceImpl implements IChatroomService{
     }
 
     @Override
-    public Chatroom addUserToChatroom(int userId, int chatroomId) {
-        User user=iUserRepo.findById(userId).get();
+    public Chatroom addUserToChatroom(String username, int chatroomId) {
+        User user=iUserRepo.findByUsername(username).get();
         Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
         if(user.getChatrooms().contains(chatroom)){
                 throw new RuntimeException("user already exists in the chatroom");
@@ -64,20 +64,22 @@ public class ChatroomServiceImpl implements IChatroomService{
     }
 
     @Override
-    public ResponseEntity<String> removeUserFromChatroom(int userId, int chatroomId) {
+    public ResponseEntity removeUserFromChatroom(String username, int chatroomId) {
         Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
-        User user=iUserRepo.findById(userId).get();
+        User user=iUserRepo.findByUsername(username).get();
         if(!(chatroom.getUsers().contains(user))){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User doesn't exist");}
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();}
         chatroom.getUsers().remove(user);
         user.getChatrooms().remove(chatroom);
         iChatroomRepo.save(chatroom);
         iUserRepo.save(user);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("User Removed from Chatroom");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     @Override
-    public List<Chatroom> getUserChatrooms(int userId) {
+    public List<Chatroom> getUserChatrooms(int userId)
+    {
+
         return iUserRepo.findById(userId).get().getChatrooms();
     }
 

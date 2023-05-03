@@ -4,9 +4,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.converter.ByteArrayMessageConverter;
 import org.springframework.messaging.converter.MessageConverter;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
 import org.springframework.web.socket.handler.WebSocketHandlerDecoratorFactory;
 
 import java.util.List;
@@ -38,6 +41,10 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
         registration.setMessageSizeLimit(1024 * 1024 * 1024);
         registration.setSendBufferSizeLimit(1024 * 1024 * 1024);
         registration.setSendTimeLimit(20000);
+
     }
+
     }
+
+
 
