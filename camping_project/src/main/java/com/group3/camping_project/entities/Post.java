@@ -2,6 +2,8 @@ package com.group3.camping_project.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.beans.MutablePropertyValues;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -44,5 +46,9 @@ public class Post implements Serializable {
     private Video video;
 
     @OneToMany(mappedBy = "post")
+    @JsonIgnore
     private List<Comment> comment;
+
+
+
 }

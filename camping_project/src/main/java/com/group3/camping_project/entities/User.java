@@ -84,6 +84,7 @@ public class User implements Serializable {
 
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Comment> comments;
 
 
