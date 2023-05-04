@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.user_management;
+package com.group3.camping_project.service.group_camping;
 
 import com.group3.camping_project.entities.GroupCamping;
 import com.group3.camping_project.entities.User;
@@ -12,10 +12,16 @@ public interface IGroupCampingService {
     public GroupCamping addGroupCamping (GroupCamping groupCamping);
 
     public GroupCamping updateGroupCamping (int id ,GroupCamping updategroupCamping);
+    public GroupCamping updateGroupCamping1(GroupCamping updategroupCamping) ;
 
     GroupCamping deleteGroupCamping(int id);
 
     public  GroupCamping retrievbyidGpCamping(int id);
+
+
+
+    List<GroupCamping> retrievByDestinationGpCamping(String destination);
+
 
     public List<User> getGroupmembers (int groupId);
 

@@ -1,9 +1,10 @@
-package com.group3.camping_project.service.user_management;
+package com.group3.camping_project.service.group_camping;
 
 import com.group3.camping_project.entities.GroupCamping;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IGroupCampingRepo;
 import com.group3.camping_project.repository.IUserRepo;
+import com.group3.camping_project.service.user_management.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,20 @@ public class GroupCampingImpl implements IGroupCampingService {
         existingGroupCamping.setAvailablePlaces(updategroupCamping.getAvailablePlaces());
         existingGroupCamping.setRequirements(updategroupCamping.getRequirements());
 
-        return iGroupCampingRepo.save(existingGroupCamping);
+        return iGroupCampingRepo.save(updategroupCamping);
+    }
+    @Override
+    public GroupCamping updateGroupCamping1(GroupCamping updategroupCamping) {
+//        GroupCamping existingGroupCamping = retrievbyidGpCamping(id);
+//        existingGroupCamping.setDescription(updategroupCamping.getDescription());
+//        existingGroupCamping.setDestination(updategroupCamping.getDestination());
+//        existingGroupCamping.setCarModel(updategroupCamping.getCarModel());
+//        existingGroupCamping.setCampingType(updategroupCamping.getCampingType());
+//        existingGroupCamping.setCreatedAt(updategroupCamping.getCreatedAt());
+//        existingGroupCamping.setAvailablePlaces(updategroupCamping.getAvailablePlaces());
+//        existingGroupCamping.setRequirements(updategroupCamping.getRequirements());
+
+        return iGroupCampingRepo.save(updategroupCamping);
     }
 
     @Override
@@ -56,6 +70,14 @@ public class GroupCampingImpl implements IGroupCampingService {
     {
         return iGroupCampingRepo.findById(id).get();
     }
+
+
+    @Override
+    public  List<GroupCamping> retrievByDestinationGpCamping(String destination)
+    {
+        return iGroupCampingRepo.findByDestination(destination);
+    }
+
 
 
 

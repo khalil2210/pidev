@@ -1,11 +1,13 @@
 package com.group3.camping_project.Controller;
 import com.group3.camping_project.entities.User;
-import com.group3.camping_project.service.user_management.IGroupCampingService;
+import com.group3.camping_project.service.group_camping.IGroupCampingService;
 import com.group3.camping_project.entities.GroupCamping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/GroupCamping")
 public class GroupCampingController {
@@ -13,8 +15,8 @@ public class GroupCampingController {
     @Autowired
     IGroupCampingService iGroupCampingService;
 
-    @GetMapping
-    public List<GroupCamping> listAGroupCamping()
+    @GetMapping("/GroupCampingS")
+    public List<GroupCamping> listGroupCamping()
     {
         return iGroupCampingService.listGroupCamping();
     }
@@ -25,10 +27,15 @@ public class GroupCampingController {
         return iGroupCampingService.addGroupCamping(groupCamping);
     }
 
-    @PostMapping("/updateGroupCamping/{id}")
+    @PutMapping("/updateGroupCamping/{id}")
     public GroupCamping updateGroupCamping (@PathVariable("id") int id ,@RequestBody GroupCamping updategroupCamping)
     {
         return iGroupCampingService.updateGroupCamping(id ,updategroupCamping);
+    }
+    @PutMapping("/updateGroupCamping1")
+    public GroupCamping updateGroupCamping1 (@RequestBody GroupCamping updategroupCamping)
+    {
+        return iGroupCampingService.updateGroupCamping1(updategroupCamping);
     }
 
     @DeleteMapping("/deleteGroupCamping/{id}")
@@ -41,6 +48,14 @@ public class GroupCampingController {
     public GroupCamping retrievbyidGpCamping (@PathVariable("id") int id)
     {
         return iGroupCampingService.retrievbyidGpCamping(id);
+    }
+
+
+
+    @GetMapping("/retrievByDestination/{destination}")
+    public List<GroupCamping> retrievByDestinationGpCamping (@PathVariable("destination") String destination)
+    {
+        return iGroupCampingService.retrievByDestinationGpCamping(destination);
     }
 
 

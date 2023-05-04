@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.user_management;
+package com.group3.camping_project.service.group_camping;
 
 public class GroupNotFoundException extends RuntimeException {
      public GroupNotFoundException(String message) {

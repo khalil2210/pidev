@@ -8,4 +8,6 @@ import java.util.List;
 
 @Repository
 public interface IGroupCampingRepo extends JpaRepository<GroupCamping,Integer> {
+
+    List<GroupCamping> findByDestination(String destination);
 }
