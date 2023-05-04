@@ -1,5 +1,6 @@
 package com.group3.camping_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.group3.camping_project.entities.enums.CampingType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class GroupCamping implements Serializable {
     private User owner;
 
     @ManyToMany
+    @JsonIgnore
     private List<User> goingUsers;
 
 

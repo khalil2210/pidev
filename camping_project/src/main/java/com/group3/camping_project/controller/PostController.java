@@ -1,9 +1,7 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
-import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.entities.Post;
 import com.group3.camping_project.service.FileService.IImageService;
-import com.group3.camping_project.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
