@@ -1,4 +1,4 @@
-package com.group3.camping_project.controller.user_management;
+package com.group3.camping_project.Controller.user_management;
 
 
 import com.group3.camping_project.controller.user_management.request.LoginRequest;
