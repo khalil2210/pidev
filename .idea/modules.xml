@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/camping_project/camping_project.iml" filepath="$PROJECT_DIR$/camping_project/camping_project.iml" />
+>>>>>>> 1c71afe7ad82bb7845a7eac0f0ce719cb3cc3986
       <module fileurl="file://$PROJECT_DIR$/.idea/pidev.iml" filepath="$PROJECT_DIR$/.idea/pidev.iml" />
     </modules>
   </component>

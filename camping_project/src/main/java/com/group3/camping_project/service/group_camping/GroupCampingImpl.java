@@ -4,7 +4,7 @@ import com.group3.camping_project.entities.GroupCamping;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IGroupCampingRepo;
 import com.group3.camping_project.repository.IUserRepo;
-import com.group3.camping_project.service.user_management.UserNotFoundException;
+import com.group3.camping_project.service.user_management.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
