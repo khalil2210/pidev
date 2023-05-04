@@ -1,4 +1,4 @@
-package com.group3.camping_project.controller;
+package com.group3.camping_project.Controller;
 
 
 
@@ -33,7 +33,7 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
-    @GetMapping("/getImage/{id}")
+        @GetMapping("/getImage/{id}")
     public ResponseEntity<?> getImage(@PathVariable int id) throws IOException {
         byte[] image =iImageService.getImage(id);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).
