@@ -94,6 +94,10 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    List<LikeDislikeComment> likeDislikeComments;
+
 
     public User(String username, String email,String firstName, String lastName,Gender gender, double phoneNumber,String encode){
         this.username = username;

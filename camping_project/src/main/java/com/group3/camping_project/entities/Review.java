@@ -1,5 +1,6 @@
 package com.group3.camping_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,10 @@ public class Review implements Serializable {
     private Date createdAt ;
 
     @ManyToOne
+    @JsonIgnore
     private CampingSpace campingSpace;
 
     @ManyToOne
+    @JsonIgnore
     private User author;
 }
