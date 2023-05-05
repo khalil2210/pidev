@@ -31,6 +31,10 @@ public class Post implements Serializable {
 
     private Date updateDate;
 
+   private String Likes;
+
+
+
     @ManyToOne
     @JsonIgnore
     private User author ;
