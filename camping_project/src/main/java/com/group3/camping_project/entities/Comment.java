@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Getter
@@ -20,14 +21,16 @@ public class Comment implements Serializable {
     private String content ;
     private Date createdAt ;
 
-    @OneToOne
-    private Image imageComment;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Image image;
     @ManyToOne
     @JsonIgnore
     private Post post;
-
-    @ManyToOne
     @JsonIgnore
+    @OneToMany(mappedBy = "comment")
+    List<LikeDislikeComment> likeDislikeComments;
+    @ManyToOne
     private User author;
 
 
