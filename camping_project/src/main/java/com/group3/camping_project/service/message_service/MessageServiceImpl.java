@@ -1,9 +1,11 @@
-package com.group3.camping_project.service.MessageService;
+package com.group3.camping_project.service.message_service;
 
 import com.group3.camping_project.entities.Chatroom;
+import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.entities.Message;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IChatroomRepo;
+import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.repository.IMessageRepo;
 import com.group3.camping_project.repository.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,18 @@ public class MessageServiceImpl implements IMessageService {
     IChatroomRepo iChatroomRepo;
     @Autowired
     IUserRepo iUserRepo;
+
+    @Autowired
+    IImageRepo iImageRepo;
     @Override
     public Message addMessage(Message message,User senderId,int chatroomId) {
         //User sender=iUserRepo.findById(senderId).get();
+        if(message.getImage()!=null){
+            Image image=message.getImage();
+            iImageRepo.save(image);
+        }
         Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
-        message.setSender(senderId);
+        message.setSender(message.getSender());
         message.setChatroom(chatroom);
        return  iMessageRepo.save(message);
     }
