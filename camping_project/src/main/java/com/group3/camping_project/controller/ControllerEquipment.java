@@ -1,4 +1,4 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Equipment;
 import com.group3.camping_project.entities.EquipmentResponse;
@@ -41,9 +41,11 @@ public class ControllerEquipment {
     }
      @PostMapping("/image")
      public ResponseEntity<?> save(@RequestParam MultipartFile file,@RequestBody Equipment equipment) throws IOException {
+
          Image message =iImageService.saveImage(file);
          Equipment equipment1 = impEquipe.addequipment(equipment);
          EquipmentResponse response = new EquipmentResponse(equipment1, "message");
+
          return ResponseEntity.status(HttpStatus.OK).body(response);
 
      }

@@ -1,4 +1,4 @@
-package com.group3.camping_project.Controller;
+package com.group3.camping_project.controller;
 
 
 
