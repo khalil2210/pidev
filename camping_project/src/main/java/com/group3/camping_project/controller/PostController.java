@@ -74,7 +74,7 @@ public class PostController {
 
     @PostMapping("/saveImagePost")
     public ResponseEntity<?> saveImage(@RequestParam MultipartFile file,@RequestPart Post post) throws IOException {
-        String message =iImageService.saveImage(file);
+        Image message =iImageService.saveImage(file);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
