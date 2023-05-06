@@ -1,10 +1,8 @@
 package com.group3.camping_project.service;
 
 import com.group3.camping_project.entities.Equipment;
-import com.group3.camping_project.entities.Image;
-import org.springframework.web.multipart.MultipartFile;
+import com.group3.camping_project.entities.enums.EquipmentType;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface ImpEquipe {
@@ -15,12 +13,8 @@ public interface ImpEquipe {
     void deleteEquipement(long id);
     Equipment addequipment1(Equipment equipment,int id);
     Equipment updateEquipment1(Equipment equipment,int id);
-
+    List<Equipment> findbytype(EquipmentType equipmentType);
 
     Equipment addEquipment2(Equipment equipment, int idimg, int iduser);
-//    Equipment saveEquipmentWithUserAndImage(Equipment equipment, MultipartFile imageFile) throws IOException;
-//     Equipment addImageToEquipment(Equipment equipment, Image image);
-//Equipment addEquipmentandimage(Equipment equipment, MultipartFile files) throws IOException;
-    //Equipment addimage(Equipment equipment,MultipartFile file);
-    //Equipment image(Equipment equipment) throws IOException;
+
 }

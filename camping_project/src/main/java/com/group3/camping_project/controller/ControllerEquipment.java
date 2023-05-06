@@ -1,9 +1,8 @@
 package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Equipment;
-import com.group3.camping_project.entities.EquipmentResponse;
-import com.group3.camping_project.entities.Image;
-import com.group3.camping_project.entities.User;
+
+import com.group3.camping_project.entities.enums.EquipmentType;
 import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.repository.IUserRepo;
@@ -53,31 +52,14 @@ public class ControllerEquipment {
     public Equipment ajouterEquipment2(@RequestBody Equipment equipment,@PathVariable("id") int id,@PathVariable("id1") int id1) {
         return impEquipe.addEquipment2(equipment,id,id1);
     }
+    @GetMapping("/getbytype")
+    public List<Equipment>equipment (EquipmentType equipmentType){
+        return impEquipe.findbytype(equipmentType);
+    }
     @PutMapping("/updateEquipment1/{id}")
     public Equipment updateEquipment1(@RequestBody Equipment equipment,@PathVariable("id") int id){
         return impEquipe.updateEquipment1(equipment,id);
     }
-//    @PostMapping("/equipments")
-//    public ResponseEntity<?> addEquipment(@RequestBody Equipment equipment, @RequestParam("image") MultipartFile imageFile) throws IOException {
-//        String message =iImageService.saveImage(imageFile);
-//        ByteArrayResource resource = new ByteArrayResource(message.getBytes());
-//        equipment = impEquipe.addimage(equipment, (MultipartFile) resource);
-//        return ResponseEntity.ok(equipment);
-//    }
-
-//    @PostMapping("/image")
-//     public ResponseEntity<?> save(@RequestParam MultipartFile file,@RequestBody Equipment equipment) throws IOException {
-//         String message =iImageService.saveImage(file);
-//         Equipment equipment1 = impEquipe.addequipment(equipment);
-//         EquipmentResponse response = new EquipmentResponse(equipment1, message);
-//         return ResponseEntity.status(HttpStatus.OK).body(response);
-//
-//     }
-//    @PostMapping("/addimage")
-//    public ResponseEntity<Equipment> addEquipment(@RequestBody Equipment equipment) throws IOException {
-//        Equipment savedEquipment = impEquipe.image(equipment);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(savedEquipment);
-//    }
 
 
      @PutMapping("/updateEquipment")
@@ -88,16 +70,5 @@ public class ControllerEquipment {
     public void deleteEquipment(@PathVariable("id")Long id){
         impEquipe.deleteEquipement(id);
      }
-//    @PostMapping("/equipment/{id}/image")
-//    public ResponseEntity<Equipment> addImageToEquipment(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
-//        Equipment equipment = impEquipe.findById(id);
-//        Image image = new Image(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-//        equipment = impEquipe.addImageToEquipment(equipment, image);
-//        return ResponseEntity.ok(equipment);
-//    }
-//    @PostMapping("/image")
-//     public Equipment addimage(@RequestBody Equipment equipment, @RequestParam MultipartFile file ) throws IOException {
-//        String message =iImageService.saveImage(file);
-//        return  impEquipe.addEquipmentandimage(equipment,files);
-//    }
+
 }

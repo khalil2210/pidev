@@ -64,14 +64,14 @@ public class PaymentController {
                 .setReceiptEmail(chargeRequest.getEmail())
                 .setSource(token.getId())
                 .build();
-        String accountSid = "AC43d0e28f9de2be9cb99dfe6f5f1b8257";
-        String authToken = "c2d2f637d6ad40be65effc0a89c1cbc9";
-        Twilio.init(accountSid, authToken);
-        Charge charge = Charge.create(params);
+//        String accountSid = "ACce68051a70f5d4095d633ac8477e18cf";
+//        String authToken = "28006f292fe803915b17aa1c7417db7d";
+//        Twilio.init(accountSid, authToken);
+          Charge charge = Charge.create(params);
         if (charge.getStatus().equals("succeeded")) {
-            String message = "Thank you for your payment!";
-            String toPhoneNumber = chargeRequest.getPhone();
-            Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber("+16206368547"), message).create();
+//            String message = "Thank you for your payment!";
+//            String toPhoneNumber = chargeRequest.getPhone();
+//            Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber("+16073262416"), message).create();
             final String username = "klaimohamed1994@gmail.com";
             final String password = "eblgesjukcqncydy";
 
@@ -86,10 +86,9 @@ public class PaymentController {
                             return new PasswordAuthentication(username, password);
                         }
                     });
-            List<Equipment>equipment =iEquipmentRepo.getallequip();
+
             try {
-                for (Equipment equipment1 : equipment
-                ){
+
 
 
                 javax.mail.Message msg = new MimeMessage(session);
@@ -173,7 +172,7 @@ public class PaymentController {
                         "\t\t\t\t\t\t<strong>Total :</strong>\n" +
                         "\t\t\t\t\t\t<strong>"+chargeRequest.getAmount()+"USD" +
                         "$</ strong>\n" +
-                        "\t\t\t<p>Please keep this receipt for your records. If you have any questions about your payment, please contact us at <a href=\"mailto:example@example.com\">example@example.com</a>.</p>\n" +
+                        "\t\t\t<p>Please keep this receipt for your records. If you have any questions about your payment, please contact us at <a href=\"mailto:klaimohamed1994@gmail.com\">klaimohamed1994@gmail.com</a>.</p>\n" +
                         "\t\t</div>\n" +
                         "\t\t<div class=\"footer\">\n" +
                         "\t\t\t<p>Copyright &copy; 2023 Example Corp.\n" +
@@ -202,7 +201,7 @@ public class PaymentController {
 //                Transport.send(msg);
 
                 System.out.println("Email sent successfully!");
-                }
+
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
             }

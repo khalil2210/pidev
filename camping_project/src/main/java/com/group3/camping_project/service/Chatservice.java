@@ -15,16 +15,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 @Service
 public class Chatservice {
-    private final String apiKey = "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";
-    private final String modelId = "gpt-4";
+    private final String apiKey = "";
+    private final String modelId = "";
 
-
-//    public String chatqpt( String message
-//                         ){
-//        String msg=chat(message);
-//        return msg;
-//
-//    }
     public String chat( String message) {
         try {
             // Create a new HTTP connection to the OpenAI API

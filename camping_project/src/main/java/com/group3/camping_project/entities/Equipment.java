@@ -6,10 +6,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -22,21 +20,23 @@ public class Equipment implements Serializable {
    private long id ;
 
    private String name;
-   private int like;
+   private int quantite_payment;
    private String description;
    private float price;
+   private int rate;
     @Column(updatable = false)
    private LocalDateTime createdAt ;
     private LocalDateTime updatetime ;
+    private int likeii ;
 
-   private int quantity ;
+    private int quantity ;
 
 
    @Enumerated(EnumType.STRING)
    private EquipmentType equipmentType ;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+
     private User user;
 
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
