@@ -3,7 +3,7 @@ package com.group3.camping_project.controller;
 
 
 import com.group3.camping_project.entities.Image;
-import com.group3.camping_project.service.FileService.IImageService;
+import com.group3.camping_project.service.file_service.IImageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

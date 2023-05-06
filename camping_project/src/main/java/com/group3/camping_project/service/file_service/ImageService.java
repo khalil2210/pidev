@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.FileService;
+package com.group3.camping_project.service.file_service;
 
 import com.group3.camping_project.utils.FileUtils;
 import com.group3.camping_project.entities.Image;

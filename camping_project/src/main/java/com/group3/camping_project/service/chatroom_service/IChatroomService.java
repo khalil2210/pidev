@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.ChatroomService;
+package com.group3.camping_project.service.chatroom_service;
 
 import com.group3.camping_project.entities.Chatroom;
 import com.group3.camping_project.entities.User;

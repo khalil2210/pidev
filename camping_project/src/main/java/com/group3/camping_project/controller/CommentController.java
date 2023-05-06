@@ -2,9 +2,9 @@ package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Comment;
 import com.group3.camping_project.entities.Image;
-import com.group3.camping_project.service.Comment.CommentServiceImpl;
-import com.group3.camping_project.service.Comment.IComment;
-import com.group3.camping_project.service.FileService.IImageService;
+import com.group3.camping_project.service.comment.CommentServiceImpl;
+import com.group3.camping_project.service.comment.IComment;
+import com.group3.camping_project.service.file_service.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

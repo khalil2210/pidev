@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.Review;
+package com.group3.camping_project.service.review;
 
 import com.group3.camping_project.entities.Review;
 

@@ -1,8 +1,6 @@
-package com.group3.camping_project.service.Comment;
+package com.group3.camping_project.service.comment;
 
 import com.group3.camping_project.entities.Comment;
-import com.group3.camping_project.entities.Image;
-import com.group3.camping_project.entities.Post;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

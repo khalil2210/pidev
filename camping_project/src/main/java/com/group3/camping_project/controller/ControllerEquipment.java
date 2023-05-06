@@ -5,7 +5,7 @@ import com.group3.camping_project.entities.EquipmentResponse;
 import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.repository.IImageRepo;
-import com.group3.camping_project.service.FileService.IImageService;
+import com.group3.camping_project.service.file_service.IImageService;
 import com.group3.camping_project.service.ImpEquipe;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.group3.camping_project.config;
-import com.group3.camping_project.service.ChatroomService.IChatroomService;
-import com.group3.camping_project.service.FileService.IImageService;
-import com.group3.camping_project.service.MessageService.IMessageService;
+import com.group3.camping_project.service.chatroom_service.IChatroomService;
+import com.group3.camping_project.service.file_service.IImageService;
+import com.group3.camping_project.service.message_service.IMessageService;
 import com.group3.camping_project.entities.Message;
 import com.group3.camping_project.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;

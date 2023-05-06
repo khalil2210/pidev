@@ -1,6 +1,6 @@
 package com.group3.camping_project.controller;
 
-import com.group3.camping_project.service.MessageService.IMessageService;
+import com.group3.camping_project.service.message_service.IMessageService;
 import com.group3.camping_project.entities.Message;
 import com.group3.camping_project.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
