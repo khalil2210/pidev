@@ -7,7 +7,7 @@ import com.group3.camping_project.entities.enums.EquipmentType;
 import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.repository.IUserRepo;
-import com.group3.camping_project.service.FileService.IImageService;
+import com.group3.camping_project.service.file_service.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
