@@ -1,5 +1,7 @@
 package com.group3.camping_project.service.file_service;
 
+import com.group3.camping_project.entities.Equipment;
+import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.utils.FileUtils;
 import com.group3.camping_project.entities.Image;
 import com.group3.camping_project.repository.IImageRepo;
@@ -16,6 +18,8 @@ public class ImageService implements IImageService{
 
     @Autowired
     IImageRepo iImageRepo;
+    @Autowired
+    IEquipmentRepo iEquipmentRepo;
 
 
     @Override
@@ -32,6 +36,25 @@ public class ImageService implements IImageService{
     public byte[] getImage(int imageId) throws IOException {
         Image image=iImageRepo.findById(imageId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"The image doesn't exits"));
         return   FileUtils.decompressFile(image.getImageData());
+    }
+    @Override
+    public Image saveImage1(MultipartFile image1) throws IOException {
+        Image image= iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image1.getBytes())).build());
+
+        return iImageRepo.save(image);
+    }
+
+    @Override
+    public byte[] getImage1(int imageId) throws IOException {
+        Image image = iImageRepo.findById(imageId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The image doesn't exist"));
+        return FileUtils.decompressFile(image.getImageData());
+    }
+    @Override
+    public Image saveImage2(MultipartFile image1,long id) throws IOException {
+        Equipment equipment =iEquipmentRepo.findById(id).get();
+        Image image= iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image1.getBytes())).build());
+      // image.setEquipment(equipment);
+        return iImageRepo.save(image);
     }
 
 

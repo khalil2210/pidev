@@ -2,12 +2,14 @@ package com.group3.camping_project.security;
 
 import com.group3.camping_project.service.user_management.UserDetailsImpl;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
@@ -16,7 +18,7 @@ public class JwtUtils {
 
     @Value("${app.jwtSecret}")
     private String jwtSecret;
-
+    private final SecretKey jwtSecret1 = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     @Value("${app.jwtExpirationInMs}")
     private int jwtExpirationMs;
 
@@ -28,7 +30,7 @@ public class JwtUtils {
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(jwtSecret1)
                 .compact();
     }
 

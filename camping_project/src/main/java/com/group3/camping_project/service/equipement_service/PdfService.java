@@ -1,4 +1,4 @@
-package com.group3.camping_project.service;
+package com.group3.camping_project.service.equipement_service;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -6,13 +6,14 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 @Service
 public class PdfService {
 
-    public void createPdf(String filename, List<String> contents) throws IOException {
+    public byte[] createPdf( List<String> contents) throws IOException {
         // Create a new document
         PDDocument document = new PDDocument();
 
@@ -35,10 +36,10 @@ public class PdfService {
         }
         contentStream.close();
 
-        // Save the document
-        document.save(filename);
-
-        // Close the document
+        // Save the document as a byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        document.save(baos);
         document.close();
+        return baos.toByteArray();
     }
 }
