@@ -1,16 +1,7 @@
 package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.ChargeRequest;
-import com.group3.camping_project.entities.Equipment;
-import com.group3.camping_project.repository.IEquipmentRepo;
-import com.group3.camping_project.service.ImpEquipe;
-import com.sendgrid.Method;
-import com.sendgrid.Request;
-import com.sendgrid.Response;
-import com.sendgrid.SendGrid;
-import com.sendgrid.helpers.mail.Mail;
-import com.sendgrid.helpers.mail.objects.Content;
-import com.sendgrid.helpers.mail.objects.Email;
+import com.group3.camping_project.service.equipement_service.ImpEquipe;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.*;
@@ -31,7 +22,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 import java.util.Properties;
 
@@ -64,14 +55,14 @@ public class PaymentController {
                 .setReceiptEmail(chargeRequest.getEmail())
                 .setSource(token.getId())
                 .build();
-//        String accountSid = "ACce68051a70f5d4095d633ac8477e18cf";
-//        String authToken = "28006f292fe803915b17aa1c7417db7d";
-//        Twilio.init(accountSid, authToken);
+        String accountSid = "ACce68051a70f5d4095d633ac8477e18cf";
+        String authToken = "28006f292fe803915b17aa1c7417db7d";
+        Twilio.init(accountSid, authToken);
           Charge charge = Charge.create(params);
         if (charge.getStatus().equals("succeeded")) {
-//            String message = "Thank you for your payment!";
-//            String toPhoneNumber = chargeRequest.getPhone();
-//            Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber("+16073262416"), message).create();
+            String message = "Thank you for your payment!";
+            String toPhoneNumber = chargeRequest.getPhone();
+            Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber("+16073262416"), message).create();
             final String username = "klaimohamed1994@gmail.com";
             final String password = "eblgesjukcqncydy";
 
@@ -195,10 +186,7 @@ public class PaymentController {
 
                 // send email message
                 Transport.send(msg);
-//                String htmlFilePath = "D:/angularapp/equipment/src/app/invoice/invoice.component.html";
-//                String htmlContent1 = new String(Files.readAllBytes(Paths.get(htmlFilePath)), "UTF-8");
-//                msg.setContent(htmlContent1, "text/html");
-//                Transport.send(msg);
+//
 
                 System.out.println("Email sent successfully!");
 

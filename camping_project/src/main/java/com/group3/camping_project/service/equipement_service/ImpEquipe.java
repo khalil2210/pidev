@@ -1,4 +1,4 @@
-package com.group3.camping_project.service;
+package com.group3.camping_project.service.equipement_service;
 
 import com.group3.camping_project.entities.Equipment;
 import com.group3.camping_project.entities.enums.EquipmentType;
