@@ -38,7 +38,6 @@ public class ImageController {
         byte[] image =iImageService.getImage(id);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).
                 body(image);
-
     }
 
 }

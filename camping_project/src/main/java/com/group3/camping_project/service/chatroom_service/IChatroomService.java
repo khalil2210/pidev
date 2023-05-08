@@ -15,9 +15,11 @@ public interface IChatroomService  {
     public List<Chatroom>getAllChatroom();
     public void deleteChatroom(int chatroomId);
 
-    public Chatroom updateChatroom();
+    public Chatroom updateChatroom(int chatroomId,MultipartFile image,String chatroomName) throws IOException;
 
-    public Chatroom addUserToChatroom(String username,int chatroomId);
+
+
+    public Chatroom addUserToChatroom(String username, int chatroomId);
 
     public ResponseEntity<String> removeUserFromChatroom(String username, int chatroomId);
 
