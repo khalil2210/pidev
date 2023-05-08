@@ -60,6 +60,10 @@ public class ChatroomController {
     }
 
 
+    @PutMapping("/updateChatroom/{chatroomId}")
+    public Chatroom updateChatroom(@PathVariable int chatroomId, MultipartFile image,@RequestPart String chatroomName) throws IOException {
+        return iChatroomService.updateChatroom(chatroomId,image,chatroomName);
+    }
 
 
-}
+    }

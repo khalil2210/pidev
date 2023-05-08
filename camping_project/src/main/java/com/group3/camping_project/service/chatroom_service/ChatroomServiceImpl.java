@@ -44,11 +44,19 @@ public class ChatroomServiceImpl implements IChatroomService{
     public void deleteChatroom(int chatroomId) {
        iChatroomRepo.deleteById(chatroomId);
     }
-    @Override
-    public Chatroom updateChatroom() {
-        return null;
-    }
 
+    @Override
+    public Chatroom updateChatroom(int chatroomId, MultipartFile image, String chatroomName) throws IOException {
+       Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
+       if(image!=null){
+           Image imageR= iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image.getBytes())).build());
+           chatroom.setImage(imageR);
+       }
+       if(chatroomName!=null){
+            chatroom.setName(chatroomName);
+       }
+        return iChatroomRepo.save(chatroom);
+    }
     @Override
     public Chatroom addUserToChatroom(String username, int chatroomId) {
         User user=iUserRepo.findByUsername(username).get();
