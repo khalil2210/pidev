@@ -11,6 +11,7 @@ import com.group3.camping_project.repository.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,6 +26,10 @@ public class MessageServiceImpl implements IMessageService {
 
     @Autowired
     IImageRepo iImageRepo;
+
+    private List<String> badWords = Arrays.asList("bad","badd","baad","badd","baaaad","baadd", "ugly","uglyy","uglyyy","uggly", "nasty", "nastyy", "nastyyy","naasty"); // list of bad words
+
+
     @Override
     public Message addMessage(Message message,User senderId,int chatroomId) {
         //User sender=iUserRepo.findById(senderId).get();
@@ -35,6 +40,9 @@ public class MessageServiceImpl implements IMessageService {
         Chatroom chatroom=iChatroomRepo.findById(chatroomId).get();
         message.setSender(message.getSender());
         message.setChatroom(chatroom);
+        for (String word : badWords) {
+            message.setContent(message.getContent().replaceAll("(?i)" + word, "***"));
+        }
        return  iMessageRepo.save(message);
     }
 
