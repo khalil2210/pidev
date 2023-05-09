@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/review")
-@CrossOrigin(origins = "*")
+
 public class ReviewController {
 
 
@@ -24,7 +24,7 @@ public class ReviewController {
     }
 
     @GetMapping("/all-reviews")
-    public List<Review> getAllComments(){
+    public List<Review> getAllReview(){
         return iReview.retrieveAllReviews();
     }
 
@@ -38,8 +38,8 @@ public class ReviewController {
         iReview.deleteReview(id);
     }
 
-    @PostMapping("/addandassignreviewtocampingspace")
-    Review addandAssignReviewtoCampingSpace(@RequestParam int id, @RequestBody Review review,@RequestParam int idcampingspace ){
+    @PostMapping("/addandassignreviewtocampingspace/{id}/{idcampingspace}")
+    Review addandAssignReviewtoCampingSpace(@PathVariable int id,@PathVariable int idcampingspace,@RequestBody Review review ){
         return iReview.addandAssignReviewtoCampingSpace(id,review,idcampingspace);
     }
 }
