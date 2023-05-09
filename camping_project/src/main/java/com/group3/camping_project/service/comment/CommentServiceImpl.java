@@ -1,4 +1,4 @@
-package com.group3.camping_project.service.Comment;
+package com.group3.camping_project.service.comment;
 
 import com.group3.camping_project.entities.*;
 import com.group3.camping_project.entities.enums.CommentRate;

@@ -25,7 +25,7 @@ public class Post implements Serializable {
 
     private String  content ;
 
-    private int LikesNumber ;
+    private int LikesNumber;
 
     private Date creationDate;
 

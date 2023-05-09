@@ -11,4 +11,5 @@ import java.util.List;
 public interface IMessageRepo extends JpaRepository<Message,Integer> {
     List<Message>findByChatroom_Id(int chatroomId);
 
+
 }

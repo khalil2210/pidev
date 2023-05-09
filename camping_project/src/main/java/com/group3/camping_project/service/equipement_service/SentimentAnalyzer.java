@@ -1,4 +1,4 @@
-package com.group3.camping_project.service;
+package com.group3.camping_project.service.equipement_service;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;

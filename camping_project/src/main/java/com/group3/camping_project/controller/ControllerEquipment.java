@@ -1,19 +1,15 @@
 package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Equipment;
-import com.group3.camping_project.entities.EquipmentResponse;
+
+import com.group3.camping_project.entities.enums.EquipmentType;
 import com.group3.camping_project.repository.IEquipmentRepo;
 import com.group3.camping_project.repository.IImageRepo;
-import com.group3.camping_project.service.FileService.IImageService;
-import com.group3.camping_project.service.ImpEquipe;
-
+import com.group3.camping_project.service.equipement_service.ImpEquipe;
+import com.group3.camping_project.service.file_service.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
@@ -25,7 +21,9 @@ public class ControllerEquipment {
     IEquipmentRepo iEquipmentRepo;
     @Autowired
     IImageRepo iImageRepo;
+    @Autowired
     IImageService iImageService;
+
     @GetMapping("/getall")
     public List<Equipment> getaal(){
         return impEquipe.getallequip();
@@ -38,14 +36,22 @@ public class ControllerEquipment {
     public Equipment ajouterEquipment(@RequestBody Equipment equipment) {
         return impEquipe.addequipment(equipment);
     }
-     @PostMapping("/image")
-     public ResponseEntity<?> save(@RequestParam MultipartFile file,@RequestBody Equipment equipment) throws IOException {
-       //  String message =iImageService.saveImage(file);
-         Equipment equipment1 = impEquipe.addequipment(equipment);
-         EquipmentResponse response = new EquipmentResponse(equipment1 ,"");
-         return ResponseEntity.status(HttpStatus.OK).body(response);
-
-     }
+    @PostMapping("/addEquipment1/{id}")
+    public Equipment ajouterEquipment1(@RequestBody Equipment equipment,@PathVariable("id") int id) {
+        return impEquipe.addequipment1(equipment,id);
+    }
+    @PostMapping("/addEquipment2/{id}/{id1}")
+    public Equipment ajouterEquipment2(@RequestBody Equipment equipment,@PathVariable("id") int id,@PathVariable("id1") int id1) {
+        return impEquipe.addEquipment2(equipment,id,id1);
+    }
+    @GetMapping("/getbytype")
+    public List<Equipment>equipment (EquipmentType equipmentType){
+        return impEquipe.findbytype(equipmentType);
+    }
+    @PutMapping("/updateEquipment1/{id}")
+    public Equipment updateEquipment1(@RequestBody Equipment equipment,@PathVariable("id") int id){
+        return impEquipe.updateEquipment1(equipment,id);
+    }
 
 
      @PutMapping("/updateEquipment")
@@ -56,4 +62,5 @@ public class ControllerEquipment {
     public void deleteEquipment(@PathVariable("id")Long id){
         impEquipe.deleteEquipement(id);
      }
+
 }

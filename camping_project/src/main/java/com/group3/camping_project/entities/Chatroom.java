@@ -21,14 +21,12 @@ public class Chatroom implements Serializable {
     private  int id ;
     private String name;
     private Date lastUpdated;
-
-    @OneToMany(mappedBy = "chatroom")
+    @OneToMany(mappedBy = "chatroom" ,cascade = CascadeType.REMOVE)
     private  List<Message> messages ;
-
     @ManyToOne
     private User owner ;
-
-
     @ManyToMany(mappedBy ="chatrooms",fetch = FetchType.EAGER)
     private List<User> users;
+    @OneToOne
+    private Image image;
 }
