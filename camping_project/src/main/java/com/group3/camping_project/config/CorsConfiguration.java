@@ -1,4 +1,4 @@
-package com.group3.camping_project.config;
+/*package com.group3.camping_project.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,3 +21,4 @@ public class CorsConfiguration {
         };
     }
 }
+*/

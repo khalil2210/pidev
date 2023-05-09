@@ -102,7 +102,7 @@ public class CommentServiceImpl implements IComment {
         }
     }
     @Transactional
-    public void userLikesProduct (int productId, int userId){
+            public void userLikesProduct (int productId, int userId){
         User user=userRepo.findById(userId).get();
         Comment comment=commentRepo.findById(productId).get();
         LikeDislikeComment previousLike = likeDislikeRepo.findByCommentAndUser(comment, user);
