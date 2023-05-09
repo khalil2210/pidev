@@ -1,18 +1,29 @@
 package com.group3.camping_project.service.group_camping;
 
 import com.group3.camping_project.entities.GroupCamping;
+import com.group3.camping_project.entities.Image;
+import com.group3.camping_project.entities.Post;
 import com.group3.camping_project.entities.User;
 import com.group3.camping_project.repository.IGroupCampingRepo;
+import com.group3.camping_project.repository.IImageRepo;
 import com.group3.camping_project.repository.IUserRepo;
 import com.group3.camping_project.service.user_management.exception.UserNotFoundException;
+import com.group3.camping_project.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 @Service
 public class GroupCampingImpl implements IGroupCampingService {
     @Autowired
     IGroupCampingRepo iGroupCampingRepo;
+    @Autowired
+    IImageRepo iImageRepo;
 
     @Override
     public List<GroupCamping> listGroupCamping()
@@ -22,37 +33,30 @@ public class GroupCampingImpl implements IGroupCampingService {
 
 
     @Override
-    public GroupCamping addGroupCamping (GroupCamping groupCamping)
-    {
+    public GroupCamping addGroupCamping (GroupCamping groupCamping ,MultipartFile image) throws IOException {
+
+        Image imagee = iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image.getBytes())).build());
+        groupCamping.setImage(imagee);
+
         return iGroupCampingRepo.save(groupCamping);
     }
 
 
 
 
-    @Override
-    public GroupCamping updateGroupCamping (int id, GroupCamping updategroupCamping) {
-        GroupCamping existingGroupCamping = retrievbyidGpCamping(id);
-        existingGroupCamping.setDescription(updategroupCamping.getDescription());
-        existingGroupCamping.setDestination(updategroupCamping.getDestination());
-        existingGroupCamping.setCarModel(updategroupCamping.getCarModel());
-        existingGroupCamping.setCampingType(updategroupCamping.getCampingType());
-        existingGroupCamping.setCreatedAt(updategroupCamping.getCreatedAt());
-        existingGroupCamping.setAvailablePlaces(updategroupCamping.getAvailablePlaces());
-        existingGroupCamping.setRequirements(updategroupCamping.getRequirements());
 
+
+
+    @Override
+    public GroupCamping updateGroupCamping ( MultipartFile image,  GroupCamping updategroupCamping) throws IOException {
+        Image imagee = iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image.getBytes())).build());
+
+        updategroupCamping.setImage(imagee);
         return iGroupCampingRepo.save(updategroupCamping);
     }
     @Override
     public GroupCamping updateGroupCamping1(GroupCamping updategroupCamping) {
-//        GroupCamping existingGroupCamping = retrievbyidGpCamping(id);
-//        existingGroupCamping.setDescription(updategroupCamping.getDescription());
-//        existingGroupCamping.setDestination(updategroupCamping.getDestination());
-//        existingGroupCamping.setCarModel(updategroupCamping.getCarModel());
-//        existingGroupCamping.setCampingType(updategroupCamping.getCampingType());
-//        existingGroupCamping.setCreatedAt(updategroupCamping.getCreatedAt());
-//        existingGroupCamping.setAvailablePlaces(updategroupCamping.getAvailablePlaces());
-//        existingGroupCamping.setRequirements(updategroupCamping.getRequirements());
+
 
         return iGroupCampingRepo.save(updategroupCamping);
     }
@@ -110,6 +114,10 @@ public class GroupCampingImpl implements IGroupCampingService {
     }
 
 
+
+
+
+
     @Override
     public void removeUserOfGroup(int userId, int groupId) {
         User user = iUserRepo.findById(userId)
@@ -124,6 +132,13 @@ public class GroupCampingImpl implements IGroupCampingService {
         iGroupCampingRepo.save(groupCamping);
         iUserRepo.save(user);
     }
+
+
+
+
+
+
+
 
 
 }

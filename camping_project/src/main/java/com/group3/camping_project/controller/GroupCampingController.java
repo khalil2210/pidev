@@ -3,9 +3,14 @@ import com.group3.camping_project.entities.User;
 import com.group3.camping_project.service.group_camping.IGroupCampingService;
 import com.group3.camping_project.entities.GroupCamping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Valid;
 
 
+import java.io.IOException;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
@@ -22,15 +27,14 @@ public class GroupCampingController {
     }
 
     @PostMapping("/addGroupCamping")
-    public GroupCamping addGroupCamping (@RequestBody GroupCamping groupCamping)
-    {
-        return iGroupCampingService.addGroupCamping(groupCamping);
+    public GroupCamping addGroupCamping (@Valid @RequestPart GroupCamping groupCamping, @RequestParam MultipartFile file) throws IOException {
+        return iGroupCampingService.addGroupCamping(groupCamping,file);
     }
 
-    @PutMapping("/updateGroupCamping/{id}")
-    public GroupCamping updateGroupCamping (@PathVariable("id") int id ,@RequestBody GroupCamping updategroupCamping)
+    @PutMapping(value = "/updateGroupCamping")
+    public GroupCamping updateGroupCamping (@RequestParam MultipartFile file,@RequestPart GroupCamping updategroupCamping)throws IOException
     {
-        return iGroupCampingService.updateGroupCamping(id ,updategroupCamping);
+        return iGroupCampingService.updateGroupCamping(file ,updategroupCamping);
     }
     @PutMapping("/updateGroupCamping1")
     public GroupCamping updateGroupCamping1 (@RequestBody GroupCamping updategroupCamping)

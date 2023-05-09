@@ -9,6 +9,10 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -22,13 +26,21 @@ public class GroupCamping implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
+    @NotNull
+    @Size(min = 2, max = 150)
     private String description;
     private String destination;
     private String carModel;
     private CampingType campingType;
     private Date createdAt ;
+    @Min(1)
+    @Max(25)
     private int AvailablePlaces ;
     private String requirements ;
+    private int rating;
+    @OneToOne(cascade =  CascadeType.ALL)
+    private Image image;
+
 
     @ManyToOne
     private User owner;
