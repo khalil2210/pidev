@@ -27,7 +27,7 @@ public class GroupCamping implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
     @NotNull
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 150)
     private String description;
     private String destination;
     private String carModel;

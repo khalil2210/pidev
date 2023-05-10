@@ -11,6 +11,8 @@ import com.group3.camping_project.service.user_management.exception.UserNotFound
 import com.group3.camping_project.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -46,7 +48,7 @@ public class GroupCampingImpl implements IGroupCampingService {
 
 
     @Override
-    public GroupCamping updateGroupCamping (MultipartFile image, GroupCamping updategroupCamping) throws IOException {
+    public GroupCamping updateGroupCamping ( MultipartFile image,  GroupCamping updategroupCamping) throws IOException {
         Image imagee = iImageRepo.save(Image.builder().imageData(FileUtils.compressFile(image.getBytes())).build());
 
         updategroupCamping.setImage(imagee);

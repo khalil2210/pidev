@@ -32,7 +32,7 @@ public class GroupCampingController {
     }
 
     @PutMapping(value = "/updateGroupCamping")
-    public GroupCamping updateGroupCamping (@RequestParam MultipartFile file,@RequestBody GroupCamping updategroupCamping)throws IOException
+    public GroupCamping updateGroupCamping (@RequestParam MultipartFile file,@RequestPart GroupCamping updategroupCamping)throws IOException
     {
         return iGroupCampingService.updateGroupCamping(file ,updategroupCamping);
     }
