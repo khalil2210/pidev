@@ -3,7 +3,7 @@ package com.group3.camping_project.controller;
 
 import com.group3.camping_project.entities.Review;
 
-import com.group3.camping_project.service.Review.IReview;
+import com.group3.camping_project.service.review.IReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/review")
+
 public class ReviewController {
 
 
@@ -23,7 +24,7 @@ public class ReviewController {
     }
 
     @GetMapping("/all-reviews")
-    public List<Review> getAllComments(){
+    public List<Review> getAllReview(){
         return iReview.retrieveAllReviews();
     }
 
@@ -37,8 +38,8 @@ public class ReviewController {
         iReview.deleteReview(id);
     }
 
-    @PostMapping("/addandassignreviewtocampingspace")
-    Review addandAssignReviewtoCampingSpace(@RequestParam int id, @RequestBody Review review,@RequestParam int idcampingspace ){
+    @PostMapping("/addandassignreviewtocampingspace/{id}/{idcampingspace}")
+    Review addandAssignReviewtoCampingSpace(@PathVariable int id,@PathVariable int idcampingspace,@RequestBody Review review ){
         return iReview.addandAssignReviewtoCampingSpace(id,review,idcampingspace);
     }
 }

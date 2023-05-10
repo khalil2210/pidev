@@ -10,8 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import java.util.Set;
-
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -65,6 +63,7 @@ public class User implements Serializable {
     private List<CampingSpace> createdCampingSpace;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Equipment> equipment;
 
     @ManyToMany(mappedBy = "goingUsers")
@@ -94,6 +93,10 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "sender")
     private List<Message>messages;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    List<LikeDislikeComment> likeDislikeComments;
+
 
     public User(String username, String email,String firstName, String lastName,Gender gender, double phoneNumber,String encode){
         this.username = username;

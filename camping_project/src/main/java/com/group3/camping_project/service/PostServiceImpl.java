@@ -52,12 +52,8 @@ public class PostServiceImpl implements IPostService{
         return  postRepo.findAll();
     }
     @Override
-    public Post updatePost(Post newpost){
-
-        Post post = postRepo.getById(newpost.getId());
-        post.setTitle(newpost.getTitle());
-        post.setContent(newpost.getContent() );
-        post.setUpdateDate(new Date());
+    public Post updatePost(Post post){
+        post.setLikesNumber(post.getLikesNumber()+1);
         filterBadWords(post);
         return postRepo.save(post);
     }

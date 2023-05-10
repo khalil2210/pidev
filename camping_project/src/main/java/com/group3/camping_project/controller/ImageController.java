@@ -2,7 +2,8 @@ package com.group3.camping_project.controller;
 
 
 
-import com.group3.camping_project.service.FileService.IImageService;
+import com.group3.camping_project.entities.Image;
+import com.group3.camping_project.service.file_service.IImageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class ImageController {
 
     @PostMapping("/saveImage")
     public ResponseEntity<?> saveImage(@RequestParam MultipartFile file) throws IOException {
-        String message =iImageService.saveImage(file);
+        Image message =iImageService.saveImage(file);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
@@ -37,7 +38,6 @@ public class ImageController {
         byte[] image =iImageService.getImage(id);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).
                 body(image);
-
     }
 
 }

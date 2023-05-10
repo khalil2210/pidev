@@ -2,9 +2,12 @@ package com.group3.camping_project.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -12,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +23,7 @@ public class Message implements Serializable {
 
     private String content ;
 
-    private Date sentAt ;
+    private LocalDateTime sentAt ;
 
     @ManyToOne
     @JsonIgnore
@@ -27,5 +31,13 @@ public class Message implements Serializable {
 
     @ManyToOne
     private User sender ;
+
+    @OneToOne
+    private Image image;
+
+    @PrePersist
+    public void setCreationDateTime() {
+        this.sentAt = LocalDateTime.now();
+    }
 
 }
