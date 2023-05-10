@@ -9,6 +9,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -31,6 +33,8 @@ public class GroupCamping implements Serializable {
     private String carModel;
     private CampingType campingType;
     private Date createdAt ;
+    @Min(1)
+    @Max(25)
     private int AvailablePlaces ;
     private String requirements ;
     private int rating;
